@@ -1,0 +1,1288 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/isaacs/minimatch#readme"
+
+    >minimatch (v3.0.3)</a>
+</h1>
+<h4>a glob matcher in javascript</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.minimatch">module minimatch</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch">
+            function <span class="apidocSignatureSpan">minimatch.</span>Minimatch
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.braceExpand">
+            function <span class="apidocSignatureSpan">minimatch.</span>braceExpand
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.defaults">
+            function <span class="apidocSignatureSpan">minimatch.</span>defaults
+            <span class="apidocSignatureSpan">(def)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.filter">
+            function <span class="apidocSignatureSpan">minimatch.</span>filter
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.makeRe">
+            function <span class="apidocSignatureSpan">minimatch.</span>makeRe
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.match">
+            function <span class="apidocSignatureSpan">minimatch.</span>match
+            <span class="apidocSignatureSpan">(list, pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">minimatch.</span>GLOBSTAR</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">minimatch.</span>Minimatch.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.minimatch.Minimatch">module minimatch.Minimatch</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.Minimatch">
+            function <span class="apidocSignatureSpan">minimatch.</span>Minimatch
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.defaults">
+            function <span class="apidocSignatureSpan">minimatch.Minimatch.</span>defaults
+            <span class="apidocSignatureSpan">(def)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">minimatch.Minimatch.</span>GLOBSTAR</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.minimatch.Minimatch.prototype">module minimatch.Minimatch.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.prototype.braceExpand">
+            function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>braceExpand
+            <span class="apidocSignatureSpan">(pattern, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.prototype.debug">
+            function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>debug
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.prototype.make">
+            function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>make
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.prototype.makeRe">
+            function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>makeRe
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.prototype.match">
+            function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>match
+            <span class="apidocSignatureSpan">(f, partial)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.prototype.matchOne">
+            function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>matchOne
+            <span class="apidocSignatureSpan">(file, pattern, partial)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.prototype.parse">
+            function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>parse
+            <span class="apidocSignatureSpan">(pattern, isSub)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.minimatch.Minimatch.prototype.parseNegate">
+            function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>parseNegate
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.minimatch" id="apidoc.module.minimatch">module minimatch</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch" id="apidoc.element.minimatch.Minimatch">
+        function <span class="apidocSignatureSpan">minimatch.</span>Minimatch
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Minimatch(pattern, options) {
+  if (!(this instanceof Minimatch)) {
+    return new Minimatch(pattern, options)
+  }
+
+  if (typeof pattern !== &#x27;string&#x27;) {
+    throw new TypeError(&#x27;glob pattern string required&#x27;)
+  }
+
+  if (!options) options = {}
+  pattern = pattern.trim()
+
+  // windows support: need to use /, not \
+  if (path.sep !== &#x27;/&#x27;) {
+    pattern = pattern.split(path.sep).join(&#x27;/&#x27;)
+  }
+
+  this.options = options
+  this.set = []
+  this.pattern = pattern
+  this.regexp = null
+  this.negate = false
+  this.comment = false
+  this.empty = false
+
+  // make the set of regexps etc.
+  this.make()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var orig = minimatch
+
+var m = function minimatch (p, pattern, options) {
+  return orig.minimatch(p, pattern, ext(def, options))
+}
+
+m.Minimatch = function Minimatch (pattern, options) {
+  return new orig.<span class="apidocCodeKeywordSpan">Minimatch</span>(pattern, ext(def, options))
+}
+
+return m
+}
+
+Minimatch.defaults = function (def) {
+if (!def || !Object.keys(def).length) return Minimatch
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.braceExpand" id="apidoc.element.minimatch.braceExpand">
+        function <span class="apidocSignatureSpan">minimatch.</span>braceExpand
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">braceExpand = function (pattern, options) {
+  return braceExpand(pattern, options)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return
+}
+
+// step 1: figure out negation, etc.
+this.parseNegate()
+
+// step 2: expand braces
+var set = this.globSet = this.<span class="apidocCodeKeywordSpan">braceExpand</span>()
+
+if (options.debug) this.debug = console.error
+
+this.debug(this.pattern, set)
+
+// step 3: now we have a set, so turn each one into a series of path-portion
+// matching patterns.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.defaults" id="apidoc.element.minimatch.defaults">
+        function <span class="apidocSignatureSpan">minimatch.</span>defaults
+        <span class="apidocSignatureSpan">(def)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">defaults = function (def) {
+  if (!def || !Object.keys(def).length) return minimatch
+
+  var orig = minimatch
+
+  var m = function minimatch (p, pattern, options) {
+    return orig.minimatch(p, pattern, ext(def, options))
+  }
+
+  m.Minimatch = function Minimatch (pattern, options) {
+    return new orig.Minimatch(pattern, ext(def, options))
+  }
+
+  return m
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+return m
+}
+
+Minimatch.defaults = function (def) {
+if (!def || !Object.keys(def).length) return Minimatch
+return minimatch.<span class="apidocCodeKeywordSpan">defaults</span>(def).Minimatch
+}
+
+function minimatch (p, pattern, options) {
+if (typeof pattern !== &#x27;string&#x27;) {
+  throw new TypeError(&#x27;glob pattern string required&#x27;)
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.filter" id="apidoc.element.minimatch.filter">
+        function <span class="apidocSignatureSpan">minimatch.</span>filter
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function filter(pattern, options) {
+  options = options || {}
+  return function (p, i, list) {
+    return minimatch(p, pattern, options)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Main export.  Tests a path against the pattern using the options.
+
+```javascript
+var isJS = minimatch(file, &#x22;*.js&#x22;, { matchBase: true })
+```
+
+### minimatch.<span class="apidocCodeKeywordSpan">filter</span>(pattern, options)
+
+Returns a function that tests its
+supplied argument, suitable for use with `Array.filter`.  Example:
+
+```javascript
+var javascripts = fileList.filter(minimatch.filter(&#x22;*.js&#x22;, {matchBase: true}))
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.makeRe" id="apidoc.element.minimatch.makeRe">
+        function <span class="apidocSignatureSpan">minimatch.</span>makeRe
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">makeRe = function (pattern, options) {
+  return new Minimatch(pattern, options || {}).makeRe()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+files, in the style of fnmatch or glob.  If nothing is matched, and
+options.nonull is set, then return a list containing the pattern itself.
+
+```javascript
+var javascripts = minimatch.match(fileList, &#x22;*.js&#x22;, {matchBase: true}))
+```
+
+### minimatch.<span class="apidocCodeKeywordSpan">makeRe</span>(pattern, options)
+
+Make a regular expression object from the pattern.
+
+## Options
+
+All options are `false` by default.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.match" id="apidoc.element.minimatch.match">
+        function <span class="apidocSignatureSpan">minimatch.</span>match
+        <span class="apidocSignatureSpan">(list, pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">match = function (list, pattern, options) {
+  options = options || {}
+  var mm = new Minimatch(pattern, options)
+  list = list.filter(function (f) {
+    return mm.match(f)
+  })
+  if (mm.options.nonull &#x26;&#x26; !list.length) {
+    list.push(pattern)
+  }
+  return list
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Returns a function that tests its
+supplied argument, suitable for use with `Array.filter`.  Example:
+
+```javascript
+var javascripts = fileList.filter(minimatch.filter(&#x22;*.js&#x22;, {matchBase: true}))
+```
+
+### minimatch.<span class="apidocCodeKeywordSpan">match</span>(list, pattern, options)
+
+Match against the list of
+files, in the style of fnmatch or glob.  If nothing is matched, and
+options.nonull is set, then return a list containing the pattern itself.
+
+```javascript
+var javascripts = minimatch.match(fileList, &#x22;*.js&#x22;, {matchBase: true}))
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.minimatch.Minimatch" id="apidoc.module.minimatch.Minimatch">module minimatch.Minimatch</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.Minimatch" id="apidoc.element.minimatch.Minimatch.Minimatch">
+        function <span class="apidocSignatureSpan">minimatch.</span>Minimatch
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Minimatch(pattern, options) {
+  if (!(this instanceof Minimatch)) {
+    return new Minimatch(pattern, options)
+  }
+
+  if (typeof pattern !== &#x27;string&#x27;) {
+    throw new TypeError(&#x27;glob pattern string required&#x27;)
+  }
+
+  if (!options) options = {}
+  pattern = pattern.trim()
+
+  // windows support: need to use /, not \
+  if (path.sep !== &#x27;/&#x27;) {
+    pattern = pattern.split(path.sep).join(&#x27;/&#x27;)
+  }
+
+  this.options = options
+  this.set = []
+  this.pattern = pattern
+  this.regexp = null
+  this.negate = false
+  this.comment = false
+  this.empty = false
+
+  // make the set of regexps etc.
+  this.make()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var orig = minimatch
+
+var m = function minimatch (p, pattern, options) {
+  return orig.minimatch(p, pattern, ext(def, options))
+}
+
+m.Minimatch = function Minimatch (pattern, options) {
+  return new orig.<span class="apidocCodeKeywordSpan">Minimatch</span>(pattern, ext(def, options))
+}
+
+return m
+}
+
+Minimatch.defaults = function (def) {
+if (!def || !Object.keys(def).length) return Minimatch
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.defaults" id="apidoc.element.minimatch.Minimatch.defaults">
+        function <span class="apidocSignatureSpan">minimatch.Minimatch.</span>defaults
+        <span class="apidocSignatureSpan">(def)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">defaults = function (def) {
+  if (!def || !Object.keys(def).length) return Minimatch
+  return minimatch.defaults(def).Minimatch
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+return m
+}
+
+Minimatch.defaults = function (def) {
+if (!def || !Object.keys(def).length) return Minimatch
+return minimatch.<span class="apidocCodeKeywordSpan">defaults</span>(def).Minimatch
+}
+
+function minimatch (p, pattern, options) {
+if (typeof pattern !== &#x27;string&#x27;) {
+  throw new TypeError(&#x27;glob pattern string required&#x27;)
+}
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.minimatch.Minimatch.prototype" id="apidoc.module.minimatch.Minimatch.prototype">module minimatch.Minimatch.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.prototype.braceExpand" id="apidoc.element.minimatch.Minimatch.prototype.braceExpand">
+        function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>braceExpand
+        <span class="apidocSignatureSpan">(pattern, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function braceExpand(pattern, options) {
+  if (!options) {
+    if (this instanceof Minimatch) {
+      options = this.options
+    } else {
+      options = {}
+    }
+  }
+
+  pattern = typeof pattern === &#x27;undefined&#x27;
+    ? this.pattern : pattern
+
+  if (typeof pattern === &#x27;undefined&#x27;) {
+    throw new TypeError(&#x27;undefined pattern&#x27;)
+  }
+
+  if (options.nobrace ||
+    !pattern.match(/\{.*\}/)) {
+    // shortcut. no need to expand.
+    return [pattern]
+  }
+
+  return expand(pattern)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return
+}
+
+// step 1: figure out negation, etc.
+this.parseNegate()
+
+// step 2: expand braces
+var set = this.globSet = this.<span class="apidocCodeKeywordSpan">braceExpand</span>()
+
+if (options.debug) this.debug = console.error
+
+this.debug(this.pattern, set)
+
+// step 3: now we have a set, so turn each one into a series of path-portion
+// matching patterns.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.prototype.debug" id="apidoc.element.minimatch.Minimatch.prototype.debug">
+        function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>debug
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">debug = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this.parseNegate()
+
+// step 2: expand braces
+var set = this.globSet = this.braceExpand()
+
+if (options.debug) this.debug = console.error
+
+this.<span class="apidocCodeKeywordSpan">debug</span>(this.pattern, set)
+
+// step 3: now we have a set, so turn each one into a series of path-portion
+// matching patterns.
+// These will be regexps, except in the case of &#x22;**&#x22;, which is
+// set to the GLOBSTAR object for globstar behavior,
+// and will not contain any / characters
+set = this.globParts = set.map(function (s) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.prototype.make" id="apidoc.element.minimatch.Minimatch.prototype.make">
+        function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>make
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function make() {
+  // don&#x27;t do it more than once.
+  if (this._made) return
+
+  var pattern = this.pattern
+  var options = this.options
+
+  // empty patterns and comments match nothing.
+  if (!options.nocomment &#x26;&#x26; pattern.charAt(0) === &#x27;#&#x27;) {
+    this.comment = true
+    return
+  }
+  if (!pattern) {
+    this.empty = true
+    return
+  }
+
+  // step 1: figure out negation, etc.
+  this.parseNegate()
+
+  // step 2: expand braces
+  var set = this.globSet = this.braceExpand()
+
+  if (options.debug) this.debug = console.error
+
+  this.debug(this.pattern, set)
+
+  // step 3: now we have a set, so turn each one into a series of path-portion
+  // matching patterns.
+  // These will be regexps, except in the case of &#x22;**&#x22;, which is
+  // set to the GLOBSTAR object for globstar behavior,
+  // and will not contain any / characters
+  set = this.globParts = set.map(function (s) {
+    return s.split(slashSplit)
+  })
+
+  this.debug(this.pattern, set)
+
+  // glob --&#x3e; regexps
+  set = set.map(function (s, si, set) {
+    return s.map(this.parse, this)
+  }, this)
+
+  this.debug(this.pattern, set)
+
+  // filter out everything that didn&#x27;t compile properly.
+  set = set.filter(function (s) {
+    return s.indexOf(false) === -1
+  })
+
+  this.debug(this.pattern, set)
+
+  this.set = set
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this.pattern = pattern
+this.regexp = null
+this.negate = false
+this.comment = false
+this.empty = false
+
+// make the set of regexps etc.
+this.<span class="apidocCodeKeywordSpan">make</span>()
+}
+
+Minimatch.prototype.debug = function () {}
+
+Minimatch.prototype.make = make
+function make () {
+// don&#x27;t do it more than once.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.prototype.makeRe" id="apidoc.element.minimatch.Minimatch.prototype.makeRe">
+        function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>makeRe
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function makeRe() {
+  if (this.regexp || this.regexp === false) return this.regexp
+
+  // at this point, this.set is a 2d array of partial
+  // pattern strings, or &#x22;**&#x22;.
+  //
+  // It&#x27;s better to use .match().  This function shouldn&#x27;t
+  // be used, really, but it&#x27;s pretty convenient sometimes,
+  // when you just want to work with a regex.
+  var set = this.set
+
+  if (!set.length) {
+    this.regexp = false
+    return this.regexp
+  }
+  var options = this.options
+
+  var twoStar = options.noglobstar ? star
+    : options.dot ? twoStarDot
+    : twoStarNoDot
+  var flags = options.nocase ? &#x27;i&#x27; : &#x27;&#x27;
+
+  var re = set.map(function (pattern) {
+    return pattern.map(function (p) {
+      return (p === GLOBSTAR) ? twoStar
+      : (typeof p === &#x27;string&#x27;) ? regExpEscape(p)
+      : p._src
+    }).join(&#x27;\\\/&#x27;)
+  }).join(&#x27;|&#x27;)
+
+  // must match entire pattern
+  // ending in a * or ** will make it less strict.
+  re = &#x27;^(?:&#x27; + re + &#x27;)$&#x27;
+
+  // can match anything, as long as it&#x27;s not this.
+  if (this.negate) re = &#x27;^(?!&#x27; + re + &#x27;).*$&#x27;
+
+  try {
+    this.regexp = new RegExp(re, flags)
+  } catch (ex) {
+    this.regexp = false
+  }
+  return this.regexp
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+files, in the style of fnmatch or glob.  If nothing is matched, and
+options.nonull is set, then return a list containing the pattern itself.
+
+```javascript
+var javascripts = minimatch.match(fileList, &#x22;*.js&#x22;, {matchBase: true}))
+```
+
+### minimatch.<span class="apidocCodeKeywordSpan">makeRe</span>(pattern, options)
+
+Make a regular expression object from the pattern.
+
+## Options
+
+All options are `false` by default.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.prototype.match" id="apidoc.element.minimatch.Minimatch.prototype.match">
+        function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>match
+        <span class="apidocSignatureSpan">(f, partial)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function match(f, partial) {
+  this.debug(&#x27;match&#x27;, f, this.pattern)
+  // short-circuit in the case of busted things.
+  // comments, etc.
+  if (this.comment) return false
+  if (this.empty) return f === &#x27;&#x27;
+
+  if (f === &#x27;/&#x27; &#x26;&#x26; partial) return true
+
+  var options = this.options
+
+  // windows: need to use /, not \
+  if (path.sep !== &#x27;/&#x27;) {
+    f = f.split(path.sep).join(&#x27;/&#x27;)
+  }
+
+  // treat the test path as a set of pathparts.
+  f = f.split(slashSplit)
+  this.debug(this.pattern, &#x27;split&#x27;, f)
+
+  // just ONE of the pattern sets in this.set needs to match
+  // in order for it to be valid.  If negating, then just one
+  // match means that we have failed.
+  // Either way, return on the first hit.
+
+  var set = this.set
+  this.debug(this.pattern, &#x27;set&#x27;, set)
+
+  // Find the basename of the path by looking for the last non-empty segment
+  var filename
+  var i
+  for (i = f.length - 1; i &#x3e;= 0; i--) {
+    filename = f[i]
+    if (filename) break
+  }
+
+  for (i = 0; i &#x3c; set.length; i++) {
+    var pattern = set[i]
+    var file = f
+    if (options.matchBase &#x26;&#x26; pattern.length === 1) {
+      file = [filename]
+    }
+    var hit = this.matchOne(file, pattern, partial)
+    if (hit) {
+      if (options.flipNegate) return true
+      return !this.negate
+    }
+  }
+
+  // didn&#x27;t get any hits.  this is success if it&#x27;s a negative
+  // pattern, failure otherwise.
+  if (options.flipNegate) return false
+  return this.negate
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Returns a function that tests its
+supplied argument, suitable for use with `Array.filter`.  Example:
+
+```javascript
+var javascripts = fileList.filter(minimatch.filter(&#x22;*.js&#x22;, {matchBase: true}))
+```
+
+### minimatch.<span class="apidocCodeKeywordSpan">match</span>(list, pattern, options)
+
+Match against the list of
+files, in the style of fnmatch or glob.  If nothing is matched, and
+options.nonull is set, then return a list containing the pattern itself.
+
+```javascript
+var javascripts = minimatch.match(fileList, &#x22;*.js&#x22;, {matchBase: true}))
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.prototype.matchOne" id="apidoc.element.minimatch.Minimatch.prototype.matchOne">
+        function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>matchOne
+        <span class="apidocSignatureSpan">(file, pattern, partial)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">matchOne = function (file, pattern, partial) {
+  var options = this.options
+
+  this.debug(&#x27;matchOne&#x27;,
+    { &#x27;this&#x27;: this, file: file, pattern: pattern })
+
+  this.debug(&#x27;matchOne&#x27;, file.length, pattern.length)
+
+  for (var fi = 0,
+      pi = 0,
+      fl = file.length,
+      pl = pattern.length
+      ; (fi &#x3c; fl) &#x26;&#x26; (pi &#x3c; pl)
+      ; fi++, pi++) {
+    this.debug(&#x27;matchOne loop&#x27;)
+    var p = pattern[pi]
+    var f = file[fi]
+
+    this.debug(pattern, p, f)
+
+    // should be impossible.
+    // some invalid regexp stuff in the set.
+    if (p === false) return false
+
+    if (p === GLOBSTAR) {
+      this.debug(&#x27;GLOBSTAR&#x27;, [pattern, p, f])
+
+      // &#x22;**&#x22;
+      // a/**/b/**/c would match the following:
+      // a/b/x/y/z/c
+      // a/x/y/z/b/c
+      // a/b/x/b/x/c
+      // a/b/c
+      // To do this, take the rest of the pattern after
+      // the **, and see if it would match the file remainder.
+      // If so, return success.
+      // If not, the ** &#x22;swallows&#x22; a segment, and try again.
+      // This is recursively awful.
+      //
+      // a/**/b/**/c matching a/b/x/y/z/c
+      // - a matches a
+      // - doublestar
+      //   - matchOne(b/x/y/z/c, b/**/c)
+      //     - b matches b
+      //     - doublestar
+      //       - matchOne(x/y/z/c, c) -&#x3e; no
+      //       - matchOne(y/z/c, c) -&#x3e; no
+      //       - matchOne(z/c, c) -&#x3e; no
+      //       - matchOne(c, c) yes, hit
+      var fr = fi
+      var pr = pi + 1
+      if (pr === pl) {
+        this.debug(&#x27;** at the end&#x27;)
+        // a ** at the end will just swallow the rest.
+        // We have found a match.
+        // however, it will not swallow /.x, unless
+        // options.dot is set.
+        // . and .. are *never* matched by **, for explosively
+        // exponential reasons.
+        for (; fi &#x3c; fl; fi++) {
+          if (file[fi] === &#x27;.&#x27; || file[fi] === &#x27;..&#x27; ||
+            (!options.dot &#x26;&#x26; file[fi].charAt(0) === &#x27;.&#x27;)) return false
+        }
+        return true
+      }
+
+      // ok, let&#x27;s see if we can swallow whatever we can.
+      while (fr &#x3c; fl) {
+        var swallowee = file[fr]
+
+        this.debug(&#x27;\nglobstar while&#x27;, file, fr, pattern, pr, swallowee)
+
+        // XXX remove this slice.  Just pass the start index.
+        if (this.matchOne(file.slice(fr), pattern.slice(pr), partial)) {
+          this.debug(&#x27;globstar found match!&#x27;, fr, fl, swallowee)
+          // found a match.
+          return true
+        } else {
+          // can&#x27;t swallow &#x22;.&#x22; or &#x22;..&#x22; ever.
+          // can only swallow &#x22;.foo&#x22; when explicitly asked.
+          if (swallowee === &#x27;.&#x27; || swallowee === &#x27;..&#x27; ||
+            (!options.dot &#x26;&#x26; swallowee.charAt(0) === &#x27;.&#x27;)) {
+            this.debug(&#x27;dot detected!&#x27;, file, fr, pattern, pr)
+            break
+          }
+
+          // ** swallows a segment, and continue.
+          this.debug(&#x27;globstar swallow a segment, and continue&#x27;)
+          fr++
+        }
+      }
+
+      // no match was found.
+      // However, in partial mode, we can&#x27;t say this is necessarily over.
+      // If there&#x27;s more *pattern* left, then
+      if (partial) {
+        // ran out of file
+        this.debug(&#x27;\n&#x3e;&#x3e;&#x3e; no match, partial?&#x27;, file, fr, pattern, pr)
+        if (fr === fl) return true
+      }
+      return false
+    }
+
+    // something other than **
+    // non-magic patterns just have to match exactly
+    // patterns with magic have been turned into regexps.
+    var hit
+    if (typeof p === &#x27;string&#x27;) {
+      if (options.nocase) {
+        hit = f.toLowerCase() === p.toLowerCase()
+      } else {
+        hit = f === p
+      }
+      this.debug(&#x27;string match&#x27;, p, f, hit)
+    } else {
+      hit = f.match(p)
+      this.debug(&#x27;pattern match&#x27;, p, f, hit)
+    }
+
+    if (!hit) return false
+  }
+
+  // Note: ending in / means that we&#x27;ll get a final &#x22;&#x22;
+  // at the end of the pattern.  This can only match a
+  // corresponding &#x22;&#x22; at the end of the file.
+  // If the file ends in /, then it can only match a
+  // a pattern that ends in /, unless the pattern just
+  // doesn&#x27;t have any more for it. But, a/b/ should *not*
+  // match &#x22;a/b/*&#x22;, even though &#x22;&#x22; matches against the
+  // [^/]*? pattern, except in partial mode, where i ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+for (i = 0; i &#x3c; set.length; i++) {
+  var pattern = set[i]
+  var file = f
+  if (options.matchBase &#x26;&#x26; pattern.length === 1) {
+    file = [filename]
+  }
+  var hit = this.<span class="apidocCodeKeywordSpan">matchOne</span>(file, pattern, partial)
+  if (hit) {
+    if (options.flipNegate) return true
+    return !this.negate
+  }
+}
+
+// didn&#x27;t get any hits.  this is success if it&#x27;s a negative
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.prototype.parse" id="apidoc.element.minimatch.Minimatch.prototype.parse">
+        function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>parse
+        <span class="apidocSignatureSpan">(pattern, isSub)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(pattern, isSub) {
+  if (pattern.length &#x3e; 1024 * 64) {
+    throw new TypeError(&#x27;pattern is too long&#x27;)
+  }
+
+  var options = this.options
+
+  // shortcuts
+  if (!options.noglobstar &#x26;&#x26; pattern === &#x27;**&#x27;) return GLOBSTAR
+  if (pattern === &#x27;&#x27;) return &#x27;&#x27;
+
+  var re = &#x27;&#x27;
+  var hasMagic = !!options.nocase
+  var escaping = false
+  // ? =&#x3e; one single character
+  var patternListStack = []
+  var negativeLists = []
+  var stateChar
+  var inClass = false
+  var reClassStart = -1
+  var classStart = -1
+  // . and .. never match anything that doesn&#x27;t start with .,
+  // even when options.dot is set.
+  var patternStart = pattern.charAt(0) === &#x27;.&#x27; ? &#x27;&#x27; // anything
+  // not (start or / followed by . or .. followed by / or end)
+  : options.dot ? &#x27;(?!(?:^|\\\/)\\.{1,2}(?:$|\\\/))&#x27;
+  : &#x27;(?!\\.)&#x27;
+  var self = this
+
+  function clearStateChar () {
+    if (stateChar) {
+      // we had some state-tracking character
+      // that wasn&#x27;t consumed by this pass.
+      switch (stateChar) {
+        case &#x27;*&#x27;:
+          re += star
+          hasMagic = true
+        break
+        case &#x27;?&#x27;:
+          re += qmark
+          hasMagic = true
+        break
+        default:
+          re += &#x27;\\&#x27; + stateChar
+        break
+      }
+      self.debug(&#x27;clearStateChar %j %j&#x27;, stateChar, re)
+      stateChar = false
+    }
+  }
+
+  for (var i = 0, len = pattern.length, c
+    ; (i &#x3c; len) &#x26;&#x26; (c = pattern.charAt(i))
+    ; i++) {
+    this.debug(&#x27;%s\t%s %s %j&#x27;, pattern, i, re, c)
+
+    // skip over any that are escaped.
+    if (escaping &#x26;&#x26; reSpecials[c]) {
+      re += &#x27;\\&#x27; + c
+      escaping = false
+      continue
+    }
+
+    switch (c) {
+      case &#x27;/&#x27;:
+        // completely not allowed, even escaped.
+        // Should already be path-split by now.
+        return false
+
+      case &#x27;\\&#x27;:
+        clearStateChar()
+        escaping = true
+      continue
+
+      // the various stateChar values
+      // for the &#x22;extglob&#x22; stuff.
+      case &#x27;?&#x27;:
+      case &#x27;*&#x27;:
+      case &#x27;+&#x27;:
+      case &#x27;@&#x27;:
+      case &#x27;!&#x27;:
+        this.debug(&#x27;%s\t%s %s %j &#x3c;-- stateChar&#x27;, pattern, i, re, c)
+
+        // all of those are literals inside a class, except that
+        // the glob [!a] means [^a] in regexp
+        if (inClass) {
+          this.debug(&#x27;  in class&#x27;)
+          if (c === &#x27;!&#x27; &#x26;&#x26; i === classStart + 1) c = &#x27;^&#x27;
+          re += c
+          continue
+        }
+
+        // if we already have a stateChar, then it means
+        // that there was something like ** or +? in there.
+        // Handle the stateChar, then proceed with this one.
+        self.debug(&#x27;call clearStateChar %j&#x27;, stateChar)
+        clearStateChar()
+        stateChar = c
+        // if extglob is disabled, then +(asdf|foo) isn&#x27;t a thing.
+        // just clear the statechar *now*, rather than even diving into
+        // the patternList stuff.
+        if (options.noext) clearStateChar()
+      continue
+
+      case &#x27;(&#x27;:
+        if (inClass) {
+          re += &#x27;(&#x27;
+          continue
+        }
+
+        if (!stateChar) {
+          re += &#x27;\\(&#x27;
+          continue
+        }
+
+        patternListStack.push({
+          type: stateChar,
+          start: i - 1,
+          reStart: re.length,
+          open: plTypes[stateChar].open,
+          close: plTypes[stateChar].close
+        })
+        // negation is (?:(?!js)[^/]*)
+        re += stateChar === &#x27;!&#x27; ? &#x27;(?:(?!(?:&#x27; : &#x27;(?:&#x27;
+        this.debug(&#x27;plType %j %j&#x27;, stateChar, re)
+        stateChar = false
+      continue
+
+      case &#x27;)&#x27;:
+        if (inClass || !patternListStack.length) {
+          re += &#x27;\\)&#x27;
+          continue
+        }
+
+        clearStateChar()
+        hasMagic = true
+        var pl = patternListStack.pop()
+        // negation is (?:(?!js)[^/]*)
+        // The others are (?:&#x3c;pattern&#x3e;)&#x3c;type&#x3e;
+        re += pl.close
+        if (pl.type === &#x27;!&#x27;) {
+          negativeLists.push(pl)
+        }
+        pl.reEnd = re.length
+      continue
+
+      case &#x27;|&#x27;:
+        if (inClass || !patternListStack.length || escaping) {
+          re += &#x27;\\|&#x27;
+          escaping = false
+          continue
+        }
+
+        clearStateChar()
+        re += &#x27;|&#x27;
+      continue
+
+      // these are mostly the same in regexp and ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // without a try/catch and a new RegExp, but it&#x27;s tricky
+  // to do safely.  For now, this is safe and works.
+  var cs = pattern.substring(classStart + 1, i)
+  try {
+    RegExp(&#x27;[&#x27; + cs + &#x27;]&#x27;)
+  } catch (er) {
+    // not a valid class!
+    var sp = this.<span class="apidocCodeKeywordSpan">parse</span>(cs, SUBPARSE)
+    re = re.substr(0, reClassStart) + &#x27;\\[&#x27; + sp[0] + &#x27;\\]&#x27;
+    hasMagic = hasMagic || sp[1]
+    inClass = false
+    continue
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.minimatch.Minimatch.prototype.parseNegate" id="apidoc.element.minimatch.Minimatch.prototype.parseNegate">
+        function <span class="apidocSignatureSpan">minimatch.Minimatch.prototype.</span>parseNegate
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseNegate() {
+  var pattern = this.pattern
+  var negate = false
+  var options = this.options
+  var negateOffset = 0
+
+  if (options.nonegate) return
+
+  for (var i = 0, l = pattern.length
+    ; i &#x3c; l &#x26;&#x26; pattern.charAt(i) === &#x27;!&#x27;
+    ; i++) {
+    negate = !negate
+    negateOffset++
+  }
+
+  if (negateOffset) this.pattern = pattern.substr(negateOffset)
+  this.negate = negate
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+if (!pattern) {
+  this.empty = true
+  return
+}
+
+// step 1: figure out negation, etc.
+this.<span class="apidocCodeKeywordSpan">parseNegate</span>()
+
+// step 2: expand braces
+var set = this.globSet = this.braceExpand()
+
+if (options.debug) this.debug = console.error
+
+this.debug(this.pattern, set)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
