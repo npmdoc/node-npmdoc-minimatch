@@ -47,7 +47,7 @@
 }
 </style>
 <h1>api documentation for
-    <a>minimatch (v3.0.3)</a>
+    <a href="https://github.com/isaacs/minimatch#readme">minimatch (v3.0.3)</a>
 </h1>
 <h4>a glob matcher in javascript</h4>
 <div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
@@ -429,21 +429,21 @@ if (typeof pattern !== 'string') {
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+  set = set.map(function (s, si, set) {
+    return s.map(this.parse, this)
+  }, this)
 
-Main export.  Tests a path against the pattern using the options.
+  this.debug(this.pattern, set)
 
-```javascript
-var isJS = minimatch(file, "*.js", { matchBase: true })
-```
+  // filter out everything that didn't compile properly.
+  set = set.<span class="apidocCodeKeywordSpan">filter</span>(function (s) {
+    return s.indexOf(false) === -1
+  })
 
-### minimatch.<span class="apidocCodeKeywordSpan">filter</span>(pattern, options)
+  this.debug(this.pattern, set)
 
-Returns a function that tests its
-supplied argument, suitable for use with `Array.filter`.  Example:
-
-```javascript
-var javascripts = fileList.filter(minimatch.filter("*.js", {matchBase: true}))
-```
+  this.set = set
+}
 ...</pre></li>
     </ul>
 
@@ -460,20 +460,21 @@ var javascripts = fileList.filter(minimatch.filter("*.js", {matchBase: true}))
   return new Minimatch(pattern, options || {}).makeRe()
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-files, in the style of fnmatch or glob.  If nothing is matched, and
-options.nonull is set, then return a list containing the pattern itself.
+regExp._glob = pattern
+regExp._src = re
 
-```javascript
-var javascripts = minimatch.match(fileList, "*.js", {matchBase: true}))
-```
+return regExp
+}
 
-### minimatch.<span class="apidocCodeKeywordSpan">makeRe</span>(pattern, options)
+minimatch.makeRe = function (pattern, options) {
+return new Minimatch(pattern, options || {}).<span class="apidocCodeKeywordSpan">makeRe</span>()
+}
 
-Make a regular expression object from the pattern.
+Minimatch.prototype.makeRe = makeRe
+function makeRe () {
+if (this.regexp || this.regexp === false) return this.regexp
 
-## Options
-
-All options are `false` by default.
+// at this point, this.set is a 2d array of partial
 ...</pre></li>
     </ul>
 
@@ -498,21 +499,20 @@ All options are `false` by default.
   return list
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-Returns a function that tests its
-supplied argument, suitable for use with `Array.filter`.  Example:
+if (!options.nocomment &amp;&amp; pattern.charAt(0) === '#') {
+  return false
+}
 
-```javascript
-var javascripts = fileList.filter(minimatch.filter("*.js", {matchBase: true}))
-```
+// "" only matches ""
+if (pattern.trim() === '') return p === ''
 
-### minimatch.<span class="apidocCodeKeywordSpan">match</span>(list, pattern, options)
+return new Minimatch(pattern, options).<span class="apidocCodeKeywordSpan">match</span>(p)
+}
 
-Match against the list of
-files, in the style of fnmatch or glob.  If nothing is matched, and
-options.nonull is set, then return a list containing the pattern itself.
-
-```javascript
-var javascripts = minimatch.match(fileList, "*.js", {matchBase: true}))
+function Minimatch (pattern, options) {
+if (!(this instanceof Minimatch)) {
+  return new Minimatch(pattern, options)
+}
 ...</pre></li>
     </ul>
 
@@ -836,20 +836,21 @@ function make () {
   return this.regexp
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-files, in the style of fnmatch or glob.  If nothing is matched, and
-options.nonull is set, then return a list containing the pattern itself.
+regExp._glob = pattern
+regExp._src = re
 
-```javascript
-var javascripts = minimatch.match(fileList, "*.js", {matchBase: true}))
-```
+return regExp
+}
 
-### minimatch.<span class="apidocCodeKeywordSpan">makeRe</span>(pattern, options)
+minimatch.makeRe = function (pattern, options) {
+return new Minimatch(pattern, options || {}).<span class="apidocCodeKeywordSpan">makeRe</span>()
+}
 
-Make a regular expression object from the pattern.
+Minimatch.prototype.makeRe = makeRe
+function makeRe () {
+if (this.regexp || this.regexp === false) return this.regexp
 
-## Options
-
-All options are `false` by default.
+// at this point, this.set is a 2d array of partial
 ...</pre></li>
     </ul>
 
@@ -917,21 +918,20 @@ All options are `false` by default.
   return this.negate
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-Returns a function that tests its
-supplied argument, suitable for use with `Array.filter`.  Example:
+if (!options.nocomment &amp;&amp; pattern.charAt(0) === '#') {
+  return false
+}
 
-```javascript
-var javascripts = fileList.filter(minimatch.filter("*.js", {matchBase: true}))
-```
+// "" only matches ""
+if (pattern.trim() === '') return p === ''
 
-### minimatch.<span class="apidocCodeKeywordSpan">match</span>(list, pattern, options)
+return new Minimatch(pattern, options).<span class="apidocCodeKeywordSpan">match</span>(p)
+}
 
-Match against the list of
-files, in the style of fnmatch or glob.  If nothing is matched, and
-options.nonull is set, then return a list containing the pattern itself.
-
-```javascript
-var javascripts = minimatch.match(fileList, "*.js", {matchBase: true}))
+function Minimatch (pattern, options) {
+if (!(this instanceof Minimatch)) {
+  return new Minimatch(pattern, options)
+}
 ...</pre></li>
     </ul>
 
