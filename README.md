@@ -1,6 +1,6 @@
 # npmdoc-minimatch
 
-#### api documentation for  minimatch (v3.0.3)  [![npm package](https://img.shields.io/npm/v/npmdoc-minimatch.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-minimatch) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-minimatch.svg)](https://travis-ci.org/npmdoc/node-npmdoc-minimatch)
+#### basic api documentation for  [minimatch (v3.0.3)](https://github.com/isaacs/minimatch#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-minimatch.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-minimatch) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-minimatch.svg)](https://travis-ci.org/npmdoc/node-npmdoc-minimatch)
 
 #### a glob matcher in javascript
 
@@ -21,33 +21,53 @@
 ```json
 
 {
-    "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
-    "name": "minimatch",
-    "description": "a glob matcher in javascript",
-    "version": "3.0.3",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/isaacs/minimatch.git"
+    "author": {
+        "name": "Isaac Z. Schlueter",
+        "url": "http://blog.izs.me"
     },
-    "main": "minimatch.js",
-    "scripts": {
-        "posttest": "standard minimatch.js test/*.js",
-        "test": "tap test/*.js"
-    },
-    "engines": {
-        "node": "*"
+    "bugs": {
+        "url": "https://github.com/isaacs/minimatch/issues"
     },
     "dependencies": {
         "brace-expansion": "^1.0.0"
     },
+    "description": "a glob matcher in javascript",
     "devDependencies": {
         "standard": "^3.7.2",
         "tap": "^5.6.0"
     },
-    "license": "ISC",
+    "directories": {},
+    "dist": {
+        "shasum": "2a4e4090b96b2db06a9d7df01055a62a77c9b774",
+        "tarball": "https://registry.npmjs.org/minimatch/-/minimatch-3.0.3.tgz"
+    },
+    "engines": {
+        "node": "*"
+    },
     "files": [
         "minimatch.js"
-    ]
+    ],
+    "gitHead": "eed89491bd4a4e6bc463aac0dfb5c29ef0d1dc13",
+    "homepage": "https://github.com/isaacs/minimatch#readme",
+    "license": "ISC",
+    "main": "minimatch.js",
+    "maintainers": [
+        {
+            "name": "isaacs"
+        }
+    ],
+    "name": "minimatch",
+    "optionalDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/isaacs/minimatch.git"
+    },
+    "scripts": {
+        "posttest": "standard minimatch.js test/*.js",
+        "test": "tap test/*.js"
+    },
+    "version": "3.0.3",
+    "bin": {}
 }
 ```
 
